@@ -1,0 +1,11 @@
+name: Pull Request Demo
+
+on:
+  pull_request:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "A pull request triggered this workflow."
