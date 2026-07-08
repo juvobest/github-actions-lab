@@ -1,0 +1,13 @@
+name: Main Branch Only
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Running because code was pushed to main."
