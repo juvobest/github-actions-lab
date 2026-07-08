@@ -9,3 +9,4 @@ jobs:
 
     steps:
       - run: echo "A pull request triggered this workflow."
+      - run: echo " Change was made"
