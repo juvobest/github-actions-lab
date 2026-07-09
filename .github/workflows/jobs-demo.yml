@@ -1,0 +1,32 @@
+name: Jobs Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build
+        run: |
+          echo "Building project..."
+          sleep 5
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test
+        run: |
+          echo "Running tests..."
+          sleep 5
+
+  security:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Security Scan
+        run: |
+          echo "Scanning..."
+          sleep 5
