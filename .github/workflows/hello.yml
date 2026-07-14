@@ -1,20 +1,31 @@
-name: Hello Workflow
+name: Artifact Demo
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
-  hello:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Create file
+        run: echo "Hello from GitHub Actions" > message.txt
 
-      - name: Say Hello
-        run: echo "Hello GitHub Actions"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: message-file
+          path: message.txt
 
-      - name: Show current directory
-        run: pwd
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
 
-      - name: List files
-        run: ls -la
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: message-file
+
+      - name: Display file
+        run: cat message.txt
